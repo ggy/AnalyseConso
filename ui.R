@@ -7,24 +7,17 @@
 
 library(shiny)
 
-shinyUI(fluidPage(
-
-  # Application title
-  titlePanel("Old Faithful Geyser Data"),
-
-  # Sidebar with a slider input for number of bins
-  sidebarLayout(
-    sidebarPanel(
-      sliderInput("bins",
-                  "Number of bins:",
-                  min = 1,
-                  max = 50,
-                  value = 30)
-    ),
-
-    # Show a plot of the generated distribution
-    mainPanel(
-      plotOutput("distPlot")
-    )
+shinyUI(pageWithSidebar(
+  headerPanel('Analyse Consommation'),
+  sidebarPanel(
+    selectInput('xcol', 'X Variable', names(out$service), selected = names(out)),
+    selectInput('ycol', 'Y Variable', names(out$sssrv),
+                selected=names(iris)[[2]]),
+    numericInput('clusters', 'Cluster count', 3,
+                 min = 1, max = 9)
+  ),
+  mainPanel(
+    plotOutput('plot1')
   )
-))
+)
+)
