@@ -10,7 +10,7 @@ library(shiny)
 shinyUI(pageWithSidebar(
   headerPanel('Analyse Consommation'),
   sidebarPanel(
-    selectInput('xcol', 'X Variable', names(out$service), selected = names(out)),
+    selectInput('xcol', 'X Variable', listeBanque, selected = listeBanque),
     selectInput('ycol', 'Y Variable', names(out$sssrv),
                 selected=names(iris)[[2]]),
     numericInput('clusters', 'Cluster count', 3,
